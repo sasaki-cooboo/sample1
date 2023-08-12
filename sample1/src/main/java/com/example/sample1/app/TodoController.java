@@ -15,4 +15,9 @@ public class TodoController {
 	public String index() {
 		return "todo/index";
 	}
+
+	@GetMapping("/add")
+	public String add() {
+		return "todo/add";
+	}
 }
