@@ -24,38 +24,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr th:each="todo : ${todoList}">
 							<td class="text-center">
-								<span class="badge bg-success">完了</span>
-
+								<span th:text="${todo.status == 2? '完了' : '未完了'}" th:class="${todo.status == 2? 'badge bg-success' : 'badge bg-secondary'}"></span>
 							</td>
-							<td>viewの作成</td>
-							<td class="text-center">2023/08/13</td>
+							<td th:text="${todo.title}"></td>
+							<td th:text="${todo.deadline}" class="text-center">2023/08/13</td>
 							<td class="text-center">-</td>
-						</tr>
-						<tr>
-							<td class="text-center">
-								<span class="badge bg-secondary">未完了</span>
-							</td>
-							<td>一覧表示</td>
-							<td class="text-center">2023/08/14</td>
-							<td class="text-center">
-								<form action="#">
-									<button class="btn btn-sm btn-primary" type="submit">OK</button>
-								</form>
-							</td>
-						</tr>
-						<tr>
-							<td class="text-center">
-								<span class="badge bg-secondary">未完了</span>
-							</td>
-							<td>追加機能作成</td>
-							<td class="text-center">2023/08/15</td>
-							<td class="text-center">
-								<form action="#">
-									<button class="btn btn-sm btn-primary" type="submit">OK</button>
-								</form>
-							</td>
 						</tr>
 					</tbody>
 				</table>
