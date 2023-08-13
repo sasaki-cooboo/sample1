@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +36,10 @@ public class TodoController {
 	}
 
 	@PostMapping("/add")
-	public String insert(Model model, @Validated TodoForm todoForm) {
+	public String insert(Model model, @Validated TodoForm todoForm, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "todo/add";
+		}
 		Todo todo = new Todo();
 		todo.setTitle(todoForm.getTitle());
 		todo.setDeadline(todoForm.getDeadline());
