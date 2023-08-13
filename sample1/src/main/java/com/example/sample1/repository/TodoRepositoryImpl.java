@@ -38,4 +38,11 @@ public class TodoRepositoryImpl implements TodoRepository {
 		return todoList;
 	}
 
+	@Override
+	public void add(Todo todo) {
+		// TODO 自動生成されたメソッド・スタブ
+		String sql = "INSERT INTO todos (status,title,deadline) VALUES(1,?,?);";
+		this.jdbcTemplate.update(sql, todo.getTitle(), todo.getDeadline());
+	}
+
 }

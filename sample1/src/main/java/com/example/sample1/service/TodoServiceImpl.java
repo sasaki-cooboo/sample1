@@ -23,4 +23,10 @@ public class TodoServiceImpl implements TodoService {
 		return this.todoRepository.getAll();
 	}
 
+	@Override
+	public void add(Todo todo) {
+		// TODO 自動生成されたメソッド・スタブ
+		this.todoRepository.add(todo);
+	}
+
 }

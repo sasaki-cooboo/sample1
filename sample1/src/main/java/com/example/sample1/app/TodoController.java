@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.sample1.entity.Todo;
@@ -22,14 +24,24 @@ public class TodoController {
 
 	@GetMapping("/")
 	public String index(Model model) {
-		String sql = "SELECT * from todos;";
 		List<Todo> result = this.todoService.getAll();
 		model.addAttribute("todoList", result);
 		return "todo/index";
 	}
 
 	@GetMapping("/add")
-	public String add() {
+	public String add(TodoForm todoForm) {
 		return "todo/add";
+	}
+
+	@PostMapping("/add")
+	public String insert(Model model, @Validated TodoForm todoForm) {
+		Todo todo = new Todo();
+		todo.setTitle(todoForm.getTitle());
+		todo.setDeadline(todoForm.getDeadline());
+		this.todoService.add(todo);
+		List<Todo> result = this.todoService.getAll();
+		model.addAttribute("todoList", result);
+		return "redirect:";
 	}
 }
