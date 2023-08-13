@@ -26,11 +26,22 @@
 					<tbody>
 						<tr th:each="todo : ${todoList}">
 							<td class="text-center">
-								<span th:text="${todo.status == 2? '完了' : '未完了'}" th:class="${todo.status == 2? 'badge bg-success' : 'badge bg-secondary'}"></span>
+								<span th:text="${todo.status == 2? '完了' : '未完了'}"
+									th:class="${todo.status == 2? 'badge bg-success' : 'badge bg-secondary'}"></span>
 							</td>
 							<td th:text="${todo.title}"></td>
 							<td th:text="${todo.deadline}" class="text-center">2023/08/13</td>
-							<td class="text-center">-</td>
+							<td class="text-center">
+								<th:block th:if="${todo.status == 2}">
+									-
+								</th:block>
+								<th:block th:if="${todo.status == 1}">
+									<form action="#" th:action="@{/todo/update}" method="post">
+										<input name="id" type="hidden" th:value="${todo.id}" value=""/>
+										<button type="submit" class="btn btn-sm btn-primary">DONE</button>
+									</form>
+								</th:block>
+							</td>
 						</tr>
 					</tbody>
 				</table>

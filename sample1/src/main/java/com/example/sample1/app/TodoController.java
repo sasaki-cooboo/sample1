@@ -48,4 +48,12 @@ public class TodoController {
 		model.addAttribute("todoList", result);
 		return "redirect:";
 	}
+
+	@PostMapping("/update")
+	public String update(Model model, @Validated TodoUpdateForm todoUpdateForm) {
+		this.todoService.complete(todoUpdateForm.getId());
+		List<Todo> result = this.todoService.getAll();
+		model.addAttribute("todoList", result);
+		return "redirect:";
+	}
 }

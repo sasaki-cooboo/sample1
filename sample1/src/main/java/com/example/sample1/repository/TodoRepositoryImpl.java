@@ -45,4 +45,11 @@ public class TodoRepositoryImpl implements TodoRepository {
 		this.jdbcTemplate.update(sql, todo.getTitle(), todo.getDeadline());
 	}
 
+	@Override
+	public void complete(int id) {
+		// TODO 自動生成されたメソッド・スタブ
+		String sql = "UPDATE todos SET status=2 WHERE id = ?;";
+		this.jdbcTemplate.update(sql, id);
+	}
+
 }

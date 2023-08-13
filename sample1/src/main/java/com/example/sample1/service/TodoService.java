@@ -8,4 +8,6 @@ public interface TodoService {
 	public List<Todo> getAll();
 
 	public void add(Todo todo);
+
+	public void complete(int id);
 }
