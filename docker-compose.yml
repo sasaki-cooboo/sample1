@@ -19,6 +19,7 @@ services:
       TZ: ${TZ}
     volumes:
       - db:/var/lib/mysql
+      - ./infra/mysql/init:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
 
