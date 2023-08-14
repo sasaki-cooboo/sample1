@@ -1,7 +1,7 @@
 # spring boot sample todo アプリ
  ## 機能一覧
 - TODO一覧表示: /todo
-- TODO変更: /todo/update
+- TODO変更: /todo
 - TODO追加 /todo/add
 
 ## TODOの項目
