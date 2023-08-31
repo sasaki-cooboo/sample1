@@ -13,7 +13,7 @@ import lombok.Data;
 public class TodoForm {
 	public int status;
 	@NotBlank
-	@Length(max = 20)
+	@Length(min = 1, max = 20)
 	public String title;
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
